@@ -12,7 +12,7 @@ services:
     links:
       - contractor-web
     networks:
-      code-network:
+      default:
         aliases:
           - contractor-server
     environment:
@@ -34,7 +34,7 @@ services:
       - 80:80
     restart: unless-stopped
     networks:
-      code-network:
+      default:
         aliases:
           - contractor-web
     volumes:
@@ -42,6 +42,5 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
 networks:
-  code-network:
-    name: "code-network"
+  default:
     driver: bridge
