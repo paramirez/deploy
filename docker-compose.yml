@@ -25,7 +25,7 @@ services:
     container_name: "contractor-client"
     image: pefpi/contractor-client
     volumes:
-      - ./UI:/app/build
+      - UI:/app/build
 
   # contractor-web:
   #   container_name: "contractor-web"
@@ -45,3 +45,8 @@ networks:
   code-network:
     external:
       name: code-network
+
+volumes:
+  UI:
+    external:
+      name: UI
