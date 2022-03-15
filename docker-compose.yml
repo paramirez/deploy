@@ -28,6 +28,7 @@ services:
       - UI:/app/build
 
   contractor-web:
+    container_name: "contractor-web"
     image: nginx
     ports:
       - 80:80
