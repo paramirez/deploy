@@ -30,6 +30,8 @@ services:
   contractor-web:
     container_name: "contractor-web"
     image: nginx
+    depends_on:
+      - contractor-client
     ports:
       - 80:80
     restart: unless-stopped
