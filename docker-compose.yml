@@ -2,6 +2,7 @@ version: "3"
 
 services:
   contractor-server:
+    container_name: "contractor-server"
     image: pefpi/contractor-server
     restart: always
     tty: true
