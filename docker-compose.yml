@@ -10,8 +10,8 @@ services:
       - 3002:8080
     expose:
       - 3002
-    links:
-      - contractor-web
+    # links:
+    #   - contractor-web
     networks:
       - code-network
     environment:
