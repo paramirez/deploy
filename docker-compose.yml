@@ -17,9 +17,7 @@ services:
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_DATA=${DATABASE_DATA}
     networks:
-      code-network:
-        aliases:
-          - "contractor-server"
+      - code-network
 
   contractor-client:
     container_name: "contractor-client"
@@ -39,14 +37,11 @@ services:
       - UI:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
-      code-network:
-        aliases:
-          - "contractor-web"
+      - code-network
 
 networks:
   code-network:
-    external:
-      name: code-network
+    driver: bridge
 
 volumes:
   UI:
