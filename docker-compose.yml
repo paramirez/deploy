@@ -2,7 +2,6 @@ version: "3"
 
 services:
   contractor-server:
-    container_name: "contractor-server"
     image: pefpi/contractor-server
     restart: always
     tty: true
@@ -24,7 +23,6 @@ services:
       - UI:/app/build
 
   contractor-web:
-    container_name: "contractor-web"
     image: nginx
     depends_on:
       - contractor-client
