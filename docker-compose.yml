@@ -24,7 +24,7 @@ services:
     image: pefpi/contractor-client
     volumes:
       - UI:/app/build
-
+  
   contractor-web:
     container_name: "contractor-web"
     image: nginx
@@ -36,7 +36,7 @@ services:
     restart: always
     volumes:
       - UI:/usr/share/nginx/html:ro
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./nginx/conf:/etc/nginx/conf.d/default.conf
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
     networks:
