@@ -1,26 +1,6 @@
 server {
 
     listen 80;
-    listen [::]:80;
-
-    server_name unopuntoseis.contratistas.likemetric.com www.unopuntoseis.contratistas.likemetric.com;
-    server_tokens off;
-
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-
-}
-
-server {
-    listen 443 default_server ssl http2;
-    listen [::]:443 ssl http2;
-
-    server_name unopuntoseis.contratistas.likemetric.com;
 
     root /usr/share/nginx/html;
     include /etc/nginx/mime.types;
@@ -31,9 +11,30 @@ server {
     }
 
     location /api {
-        proxy_pass http://contractor-server:3002/v1;
+        proxy_pass http://192.168.192.1:3002/v1;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Real-IP $remote_addr;
     }
-
 }
+
+# server {
+#     listen 443 default_server ssl http2;
+#     listen [::]:443 ssl http2;
+
+#     server_name unopuntoseis.contratistas.likemetric.com;
+
+#     root /usr/share/nginx/html;
+#     include /etc/nginx/mime.types;
+
+#     location / {
+#         index index.html index.htm;
+#         try_files $uri $uri/ /index.html =404;
+#     }
+
+#     location /api {
+#         proxy_pass http://contractor-server:3002/v1;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#         proxy_set_header X-Real-IP $remote_addr;
+#     }
+
+# }
